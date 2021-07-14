@@ -1,0 +1,88 @@
+html {
+  width: 350px;
+  height: 570px;
+  font-family: Roboto, Arial, sans-serif;
+}
+
+img {
+  image-rendering: auto;
+}
+
+.banner {
+  position: absolute;
+  width: 102px;
+  height: 37px;
+  left: 9px;
+  top: 9px;
+
+  font-family: EB Garamond;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 10px;
+  line-height: 33px;
+
+  color: #000000;
+}
+
+.close {
+  position: absolute;
+  left: 317px;
+  top: 12px;
+  width: 20px;
+  height: 20px;
+  font-size: 23px;
+  color: #b6b6b6;
+}
+
+#close {
+  cursor: pointer;
+}
+
+hr {
+  position: absolute;
+  width: 350px;
+  height: 1px;
+  left: 0px;
+  top: 45px;
+
+  background-color: rgb(218, 218, 218);
+  border: none;
+}
+
+.container1 {
+  position: absolute;
+  width: 315px;
+  height: 183px;
+  left: 17px;
+  top: 66px;
+
+  background: #c4c4c4;
+  border-radius: 17px;
+}
+
+.container2 {
+  position: absolute;
+  width: 315px;
+  height: 183px;
+  left: 17px;
+  top: 269px;
+
+  background: #c4c4c4;
+  border-radius: 17px;
+}
+
+.seeMore {
+  position: absolute;
+  width: 68px;
+  height: 15px;
+  left: 269px;
+  top: 472px;
+
+  font-family: EB Garamond;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 16px;
+
+  color: #000000;
+}
