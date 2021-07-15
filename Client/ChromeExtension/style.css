@@ -54,10 +54,23 @@ img {
   bottom: 0px;
 }
 
-.footer-name {
+.footer p {
   position: absolute;
   left: 10px;
   bottom: -5px;
+}
+
+.footer a {
+  position: absolute;
+  right: 10px;
+  bottom: 5px;
+
+  text-decoration: none;
+
+  font-size: 12px;
+  line-height: 16px;
+
+  color: black;
 }
 
 .close {
@@ -92,7 +105,7 @@ hr {
 }
 
 .content {
-  position:absolute;
+  position: absolute;
   top: 47px;
   width: 350px;
   height: 478px;
@@ -107,40 +120,10 @@ hr {
 }
 
 .container {
-  /* position: absolute; */
   width: 315px;
   height: 183px;
   margin-top: 18px;
 
   background: #c4c4c4;
   border-radius: 17px;
-}
-
-.container2 {
-  position: absolute;
-  width: 315px;
-  height: 183px;
-  left: 17px;
-  top: 269px;
-
-  background: #c4c4c4;
-  border-radius: 17px;
-}
-
-.seeMore {
-  position: absolute;
-  /* width: 68px;
-  height: 15px; */
-  right: 10px;
-  bottom: 5px;
-
-  text-decoration: none;
-
-  font-family: EB Garamond;
-  font-style: normal;
-  font-weight: 800;
-  font-size: 12px;
-  line-height: 16px;
-
-  color: #000000;
 }
