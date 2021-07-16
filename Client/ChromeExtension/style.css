@@ -16,7 +16,7 @@ img {
 .title {
   font-family: EB Garamond;
   font-style: normal;
-  font-weight: 800;
+  font-weight: 600;
 }
 
 .banner {
@@ -57,7 +57,8 @@ img {
 .footer p {
   position: absolute;
   left: 10px;
-  bottom: -5px;
+  bottom: 5px;
+  margin: 0px;
 }
 
 .footer a {
@@ -91,11 +92,19 @@ hr {
   position: absolute;
   width: 350px;
   height: 1px;
-  left: 0px;
-  top: 39px;
 
-  background-color: rgb(218, 218, 218);
+  background-color: #e1e1e1;
   border: none;
+}
+
+#headerHR {
+  left: 0px;
+  top: 40px;
+}
+
+#footerHR {
+  bottom: 25px;
+  margin: 0px;
 }
 
 .header {
@@ -108,10 +117,10 @@ hr {
   position: absolute;
   top: 47px;
   width: 350px;
-  height: 478px;
+  height: 499px;
   align-content: center;
   overflow-y: scroll;
-  padding-bottom: 20px;
+  padding: 0px;
 }
 
 .center {
@@ -123,6 +132,7 @@ hr {
   width: 315px;
   height: 183px;
   margin-top: 18px;
+  margin-bottom: 18px;
 
   background: #c4c4c4;
   border-radius: 17px;
