@@ -20,6 +20,16 @@ h2 {
   font-weight: bold;
 }
 
+h3 {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-top: 6px;
+}
+
 a {
   color: white;
 }
@@ -160,16 +170,20 @@ hr {
   margin-right: 18px;
 }
 
+.horizontal {
+  display: flex;
+  flex-direction: row;
+}
+
 .container {
   width: auto;
   /* height: auto; */
   margin-top: 18px;
   margin-bottom: 18px;
 
-  background: #c4c4c4;
+  background: white;
   border-radius: 6px;
   padding: 18px;
-  padding-bottom: 10px;
 }
 
 #news {
@@ -206,4 +220,40 @@ hr {
   text-decoration: none;
   font-weight: 700;
   font-size: 10px;
+}
+
+.ratingColumn {
+  /* border: black 1px solid; */
+  width: 100%;
+}
+
+.right-border {
+  border-right: rgba(0, 0, 0, 0.2) 1px solid;
+  margin-right: 10px;
+}
+
+.small-bottom-margin {
+  padding-bottom: 10px;
+}
+
+.linear-border {
+  padding: 2px;
+  background-image: -webkit-linear-gradient(left, #7C75E6, #D219E6);
+  border-radius: 10px;
+  width: 180px;
+}
+
+.scNodeDetails {
+  padding: 8px 10px;
+  background: #fff;
+  border-radius: 8px;
+}
+
+.scNodeHeading {
+  font-size: 11px;
+}
+
+.full-width {
+  width: 100%;
+  margin: 0px;
 }

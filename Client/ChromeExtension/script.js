@@ -9,8 +9,8 @@ const closeNews = document.getElementById("closeNews");
 const noNewsCompany = document.getElementById("noNewsCompany");
 const closeNoNews = document.getElementById("closeNoNews");
 
-const newsAlert = false;
-const supplyChain = false;
+const newsAlert = true;
+const supplyChain = true;
 
 let companyNameString = 'Acme';
 let companyEventString = 'Nuclear Warfare';
