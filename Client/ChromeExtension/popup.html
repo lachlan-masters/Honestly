@@ -7,14 +7,18 @@
 
     <link rel="stylesheet" href="style.css" />
     <title>Honestly</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700"
+      rel="stylesheet"
+    />
   </head>
 
   <body>
     <div class="header">
       <div class="banner title">honestly</div>
 
-      <div class="close">
-        <span id="close">&times;</span>
+      <div id="closeAll">
+        <span class="close">&times;</span>
       </div>
 
       <hr id="headerHR" />
@@ -22,9 +26,16 @@
 
     <div class="content">
       <div class="container center" id="news">
-        <!-- <div class="warning">
-          <h1>ALERT</h1>
-        </div> -->
+        <div id="closeNews">
+          <span class="close">&times;</span>
+        </div>
+        <h2>FYI</h2>
+        <p class="description">
+          <strong id="companyName">Unknown</strong> has popped up in the news,
+          as being linked to <strong id="newsEvent">Unknown</strong>.
+        </p>
+        <p class="readMore">Click here to <a href="">read more</a>.</p>
+        <a class="report" href="">Report</a>
       </div>
 
       <div class="container center" id="supply">
@@ -34,9 +45,13 @@
       </div>
 
       <div class="container center" id="noNews">
-        <!-- <div class="supplyChain">
-          <h1>ALERT</h1>
-        </div> -->
+        <p>
+          We haven't picked up on any bad news on
+          <strong id="noNewsCompany">Unknown</strong> 😊
+        </p>
+        <div id="closeNoNews">
+          <span class="close">&times;</span>
+        </div>
       </div>
 
       <div class="container center" id="noSupply">
