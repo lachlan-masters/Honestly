@@ -13,6 +13,26 @@ img {
   image-rendering: auto;
 }
 
+h2 {
+  margin-top: 0px;
+  font-family: "EB Garamond";
+  font-size: 24px;
+  font-weight: bold;
+}
+
+a {
+  color: white;
+}
+
+hr {
+  position: absolute;
+  width: 350px;
+  height: 1px;
+
+  background-color: #e1e1e1;
+  border: none;
+}
+
 .title {
   font-family: EB Garamond;
   font-style: normal;
@@ -75,6 +95,10 @@ img {
 }
 
 .close {
+  cursor: pointer;
+}
+
+#closeAll {
   position: absolute;
   left: 320px;
   top: 9px;
@@ -84,17 +108,23 @@ img {
   color: #b6b6b6;
 }
 
-#close {
-  cursor: pointer;
+#closeNews {
+  position: absolute;
+  top: 16px;
+  right: 14px;
+  width: 23px;
+
+  font-size: 22px;
+  font-weight: 100;
 }
 
-hr {
+#closeNoNews {
   position: absolute;
-  width: 350px;
-  height: 1px;
+  right: 26px;
+  top: 16px;
 
-  background-color: #e1e1e1;
-  border: none;
+  font-size: 22px;
+  font-weight: 100;
 }
 
 #headerHR {
@@ -121,19 +151,59 @@ hr {
   align-content: center;
   overflow-y: scroll;
   padding: 0px;
+
+  font-family: "Open Sans", "Trebuchet MS", sans-serif;
 }
 
 .center {
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: 18px;
+  margin-right: 18px;
 }
 
 .container {
-  width: 315px;
-  height: 183px;
+  width: auto;
+  /* height: auto; */
   margin-top: 18px;
   margin-bottom: 18px;
 
   background: #c4c4c4;
-  border-radius: 17px;
+  border-radius: 6px;
+  padding: 18px;
+  padding-bottom: 10px;
+}
+
+#news {
+  background-color: #be5151;
+  color: #ffffff;
+}
+
+#noNews {
+  background-color: #282828;
+  color: white;
+
+  padding-top: 5px;
+  padding-bottom: 5px;
+
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.description {
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.readMore {
+  font-size: 13px;
+  color: white;
+}
+
+.report {
+  position: relative;
+  left: 249px;
+
+  text-align: right;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 10px;
 }
