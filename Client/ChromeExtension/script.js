@@ -8,9 +8,10 @@ const companyEvent = document.getElementById('newsEvent');
 const closeNews = document.getElementById("closeNews");
 const noNewsCompany = document.getElementById("noNewsCompany");
 const closeNoNews = document.getElementById("closeNoNews");
+const noSupplyCompanyName = document.getElementById("noSupplyCompanyName");
 
 const newsAlert = true;
-const supplyChain = true;
+const supplyChain = false;
 
 let companyNameString = 'Acme';
 let companyEventString = 'Nuclear Warfare';
@@ -42,6 +43,7 @@ else {
 if (!supplyChain) {
     supply.style.display = "none";
     noSupply.style.display = "block"
+    noSupplyCompanyName.innerText = companyNameString;
 } 
 else {
     supply.style.display = "block";

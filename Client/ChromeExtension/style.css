@@ -111,7 +111,7 @@ hr {
 #closeAll {
   position: absolute;
   left: 320px;
-  top: 9px;
+  top: 5px;
   width: 20px;
   height: 20px;
   font-size: 23px;
@@ -305,4 +305,12 @@ hr {
 
 .content::-webkit-scrollbar {
   display: none;
+}
+
+#noSupply{
+  background: linear-gradient(269.86deg, #D317E6 0.11%, #20D6E6 99.87%);
+  color: #ffffff;
+  font-size: 17px;
+  padding-top: 32px;
+  padding-bottom: 32px;
 }
