@@ -281,6 +281,8 @@ hr {
 
   padding-left: 18px;
 
+  text-align: center;
+
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -292,6 +294,7 @@ hr {
 }
 
 .date {
+  margin-top: 5px;
   font-size: 9px;
 }
 
