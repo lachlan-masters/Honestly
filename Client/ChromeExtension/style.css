@@ -160,6 +160,7 @@ hr {
   height: 499px;
   align-content: center;
   overflow-y: scroll;
+  scrollbar-width: none;
   padding: 0px;
 
   font-family: "Open Sans", "Trebuchet MS", sans-serif;
@@ -238,7 +239,7 @@ hr {
 
 .linear-border {
   padding: 2px;
-  background-image: -webkit-linear-gradient(left, #7C75E6, #D219E6);
+  background-image: -webkit-linear-gradient(left, #7c75e6, #d219e6);
   border-radius: 10px;
   width: 180px;
 }
@@ -256,4 +257,8 @@ hr {
 .full-width {
   width: 100%;
   margin: 0px;
+}
+
+.content::-webkit-scrollbar {
+  display: none;
 }
