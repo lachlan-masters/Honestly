@@ -13,6 +13,8 @@ const noSupplyCompanyName = document.getElementById("noSupplyCompanyName");
 const newsAlert = true;
 const supplyChain = false;
 
+var newsContainer = document.getElementById("news");
+
 let companyNameString = 'Acme';
 let companyEventString = 'Nuclear Warfare';
 
@@ -20,9 +22,12 @@ closeAll.addEventListener("click", () =>
     window.close()
     , false);
 
-closeNews.addEventListener("click", () => 
-    news.style.display = "none"
-    , false);
+closeNews.addEventListener("click", () => {
+    newsContainer.style.opacity = 0;
+    setTimeout(() =>{
+        news.style.display = "none";
+    }, 200);
+    }, false);
 
 closeNoNews.addEventListener("click", () => 
     noNews.style.display = "none"

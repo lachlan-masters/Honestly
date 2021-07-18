@@ -191,6 +191,7 @@ hr {
 #news {
   background-color: #be5151;
   color: #ffffff;
+  transition: all 0.2s ease-in;
 }
 
 #noNews {
