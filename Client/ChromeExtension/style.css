@@ -174,6 +174,7 @@ hr {
 .horizontal {
   display: flex;
   flex-direction: row;
+  align-items: center;
 }
 
 .container {
@@ -241,17 +242,57 @@ hr {
   padding: 2px;
   background-image: -webkit-linear-gradient(left, #7c75e6, #d219e6);
   border-radius: 10px;
-  width: 180px;
 }
 
 .scNodeDetails {
   padding: 8px 10px;
-  background: #fff;
+  background: #f8f8f7;
   border-radius: 8px;
+
+  /* height: 100%; */
 }
 
 .scNodeHeading {
   font-size: 11px;
+}
+
+.scNodeEmoji {
+  background-color: #f8f8f7;
+
+  font-size: 20px;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  border-radius: 8px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+.scNodeEmoji p {
+  margin: 0px;
+}
+
+.width75 {
+  width: 75%;
+}
+
+.scEmojiDate {
+  width: 25%;
+
+  padding-left: 18px;
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.emoji {
+  width: 44px;
+  height: 44px;
+}
+
+.date {
+  font-size: 9px;
 }
 
 .full-width {
