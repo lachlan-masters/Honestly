@@ -11,7 +11,7 @@ const closeNoNews = document.getElementById("closeNoNews");
 const noSupplyCompanyName = document.getElementById("noSupplyCompanyName");
 
 const newsAlert = true;
-const supplyChain = false;
+const supplyChain = true;
 
 var newsContainer = document.getElementById("news");
 

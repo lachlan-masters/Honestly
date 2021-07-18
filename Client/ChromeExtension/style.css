@@ -175,6 +175,7 @@ hr {
   display: flex;
   flex-direction: row;
   align-items: center;
+  margin-top: 3px;
 }
 
 .container {
@@ -314,4 +315,21 @@ hr {
   font-size: 17px;
   padding-top: 32px;
   padding-bottom: 32px;
+}
+
+.threeDotsOuter{
+  width: 5px;
+  height: 27px;
+  margin-left: 97px;
+  margin-top: 5px;
+}
+
+.threeDotsInner{
+  width: 5px;
+  height: 5px;
+  background: #FFFFFF;
+  border: 2px solid #A54AE6;
+  box-sizing: border-box;
+  border-radius: 100%;
+  margin-bottom: 5px;
 }
