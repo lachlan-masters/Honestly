@@ -11,7 +11,6 @@ const closeNoNews = document.getElementById("closeNoNews");
 const noSupplyCompanyName = document.getElementById("noSupplyCompanyName");
 
 const newsAlert = true;
-const supplyChain = true;
 
 var newsContainer = document.getElementById("news");
 
@@ -45,16 +44,6 @@ else {
     companyEvent.innerText = companyEventString;
 }
 
-if (!supplyChain) {
-    supply.style.display = "none";
-    noSupply.style.display = "block"
-    noSupplyCompanyName.innerText = companyNameString;
-} 
-else {
-    supply.style.display = "block";
-    noSupply.style.display = "none"
-}
-
 let supplyDetails = [
     {
         location: 'Penis St Trucks, Qld', 
@@ -63,8 +52,7 @@ let supplyDetails = [
             {rating: 'Ethics', score: '10 ethic'}
         ], 
         event: '🚗', 
-        date: "27 Nov '21 - 30 Nov '21", 
-        chainVisibility: 'block'
+        date: "27 Nov '21 - 30 Nov '21"
     },
     {
         location: 'Penis St Shipping, Qld', 
@@ -73,8 +61,16 @@ let supplyDetails = [
             {rating: 'Ethics', score: '10 ethic'}
         ], 
         event: '🚢', 
-        date: "27 Nov '21 - 30 Nov '21", 
-        chainVisibility: 'none'
+        date: "27 Nov '21 - 30 Nov '21"
+    },
+    {
+        location: 'Vas Deferens Port, Qld', 
+        ratings: [
+            {rating: 'Freshness', score: '10 fresh'}, 
+            {rating: 'Ethics', score: '10 ethic'}
+        ], 
+        event: '🚢', 
+        date: "30 Nov '21 - 31 Nov '21"
     }
 ];
 
@@ -94,6 +90,10 @@ let ratingsDetails = [
     {
         ratingName: 'Rotten Tomatoes',
         ratingValue: 'Rotten'
+    },
+    {
+        ratingName: 'Le Test',
+        ratingValue: 'Oui'
     }
 ]
 
@@ -109,7 +109,7 @@ document.getElementById('ratings').innerHTML = ratingsDetails.map((node, index) 
 
 
 
-document.getElementById('supply').innerHTML = supplyDetails.map(node =>
+document.getElementById('supply').innerHTML = supplyDetails.map((node, index) =>
     `<div class="horizontal">
         <div class="linear-border width75">
             <div class="scNodeDetails">
@@ -134,9 +134,18 @@ document.getElementById('supply').innerHTML = supplyDetails.map(node =>
             </div>
         </div>
     </div>
-    <div class="threeDotsOuter" style="display:${node.chainVisibility}">
+    <div class="threeDotsOuter" style="display:${index == supplyDetails.length - 1 ? "none" : "block"}">
         <div class="threeDotsInner"></div>
         <div class="threeDotsInner"></div>
         <div class="threeDotsInner"></div>
     </div>
     `).join('');
+
+if (supplyDetails.length == 0){
+    supply.style.display = "none";
+    noSupply.style.display = "block"
+    noSupplyCompanyName.innerText = companyNameString;
+}else{
+    supply.style.display = "block";
+    noSupply.style.display = "none"
+}
