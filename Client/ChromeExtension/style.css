@@ -242,7 +242,7 @@ hr {
 
 .linear-border {
   padding: 2px;
-  background-image: -webkit-linear-gradient(left, #7c75e6, #d219e6);
+  background-image: -webkit-linear-gradient(left, #d219e6, #7c75e6);
   border-radius: 10px;
 }
 
@@ -294,6 +294,10 @@ hr {
   width: 40px;
   height: 40px;
 
+  border-radius: 19px;
+
+  padding: 2px;
+  background-image: -webkit-linear-gradient(left, #7c75e6, #20D6E5);
   border-radius: 19px;
 }
 
