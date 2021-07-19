@@ -265,7 +265,7 @@ hr {
   width: 100%;
   height: 100%;
   text-align: center;
-  border-radius: 8px;
+  border-radius: 17px;
   align-items: center;
   justify-content: center;
   display: flex;
@@ -291,8 +291,10 @@ hr {
 }
 
 .emoji {
-  width: 44px;
-  height: 44px;
+  width: 40px;
+  height: 40px;
+
+  border-radius: 19px;
 }
 
 .date {
@@ -309,26 +311,26 @@ hr {
   display: none;
 }
 
-#noSupply{
-  background: linear-gradient(269.86deg, #D317E6 0.11%, #20D6E6 99.87%);
+#noSupply {
+  background: linear-gradient(269.86deg, #d317e6 0.11%, #20d6e6 99.87%);
   color: #ffffff;
   font-size: 17px;
   padding-top: 32px;
   padding-bottom: 32px;
 }
 
-.threeDotsOuter{
+.threeDotsOuter {
   width: 5px;
   height: 27px;
   margin-left: 97px;
   margin-top: 5px;
 }
 
-.threeDotsInner{
+.threeDotsInner {
   width: 5px;
   height: 5px;
-  background: #FFFFFF;
-  border: 2px solid #A54AE6;
+  background: #ffffff;
+  border: 2px solid #a54ae6;
   box-sizing: border-box;
   border-radius: 100%;
   margin-bottom: 5px;

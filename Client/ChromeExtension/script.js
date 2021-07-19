@@ -55,9 +55,65 @@ else {
     noSupply.style.display = "none"
 }
 
+let supplyDetails = [
+    {
+        location: 'Penis St Trucks, Qld', 
+        ratings: [
+            {rating: 'Freshness', score: '10 fresh'}, 
+            {rating: 'Ethics', score: '10 ethic'}
+        ], 
+        event: '🚗', 
+        date: "27 Nov '21 - 30 Nov '21", 
+        chainVisibility: 'block'
+    },
+    {
+        location: 'Penis St Trucks, Qld', 
+        ratings: [
+            {rating: 'Freshness', score: '10 fresh'}, 
+            {rating: 'Ethics', score: '10 ethic'}
+        ], 
+        event: '🚗', 
+        date: "27 Nov '21 - 30 Nov '21", 
+        chainVisibility: 'none'
+    }
+];
+
+// ratingsMap = supplyDetails.map(node =>
+//     `<div class="horizontal">
+//     <strong class="full-width">${node.ratings.rating}</strong>
+//     <p class="full-width">${node.ratings.score}</p>
+//     </div>
+//     `).join('');
 
 
-document.getElementById('test').style.display = 'none';
-
-// close.addEventListener("mouseover", () =>
-//     )
+document.getElementById('supply').innerHTML = supplyDetails.map(node =>
+    `<div class="horizontal">
+        <div class="linear-border width75">
+            <div class="scNodeDetails">
+                <h3 class="scNodeHeading">${node.location}</h3>
+                ${node.ratings.map(ratings => 
+                    `<div class="horizontal">
+                        <strong class="full-width">${ratings.rating}</strong>
+                        <p class="full-width">${ratings.score}</p>
+                    </div>
+                    `).join('')
+                }
+            </div>
+        </div>
+            <div class="scEmojiDate">
+                <div class="linear-border emoji">
+                    <div class="scNodeEmoji">
+                        <p>${node.event}</p>
+                    </div>
+                </div>
+            <div class="date">
+                <span>${node.date}</span>
+            </div>
+        </div>
+    </div>
+    <div class="threeDotsOuter" style="display:${node.chainVisibility}">
+        <div class="threeDotsInner"></div>
+        <div class="threeDotsInner"></div>
+        <div class="threeDotsInner"></div>
+    </div>
+    `).join('');
