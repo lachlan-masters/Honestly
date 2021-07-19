@@ -78,18 +78,35 @@ let supplyDetails = [
     }
 ];
 
-let reviewsDetails = [
+let ratingsDetails = [
     {
-        
+        ratingName: 'ESG Rating',
+        ratingValue: 'B+'
+    },
+    {
+        ratingName: 'Penis valuation',
+        ratingValue: 'Huge'
+    },
+    {
+        ratingName: 'GoodReads',
+        ratingValue: 'Good read'
+    },
+    {
+        ratingName: 'Rotten Tomatoes',
+        ratingValue: 'Rotten'
     }
 ]
 
-// ratingsMap = supplyDetails.map(node =>
-//     `<div class="horizontal">
-//     <strong class="full-width">${node.ratings.rating}</strong>
-//     <p class="full-width">${node.ratings.score}</p>
-//     </div>
-//     `).join('');
+let ratingsCounter = 0;
+
+document.getElementById('ratings').innerHTML = ratingsDetails.map((node, index) =>
+    `${index % 2 == 0 ? '<div class = "horizontal-no-margin-top">' : ''}
+        <div class="ratingColumn ${index % 2 == 0 && "right-border"}">
+            <h3>${node.ratingName}</h3>
+            <p>${node.ratingValue}</h3>
+        </div>
+    ${index % 2 != 0 ? '</div>' : ''}`).join('');
+
 
 
 document.getElementById('supply').innerHTML = supplyDetails.map(node =>

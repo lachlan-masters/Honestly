@@ -178,6 +178,13 @@ hr {
   margin-top: 3px;
 }
 
+.horizontal-no-margin-top {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 0px;
+}
+
 .container {
   width: auto;
   /* height: auto; */
