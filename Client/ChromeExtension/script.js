@@ -67,16 +67,22 @@ let supplyDetails = [
         chainVisibility: 'block'
     },
     {
-        location: 'Penis St Trucks, Qld', 
+        location: 'Penis St Shipping, Qld', 
         ratings: [
             {rating: 'Freshness', score: '10 fresh'}, 
             {rating: 'Ethics', score: '10 ethic'}
         ], 
-        event: '🚗', 
+        event: '🚢', 
         date: "27 Nov '21 - 30 Nov '21", 
         chainVisibility: 'none'
     }
 ];
+
+let reviewsDetails = [
+    {
+        
+    }
+]
 
 // ratingsMap = supplyDetails.map(node =>
 //     `<div class="horizontal">
@@ -101,7 +107,7 @@ document.getElementById('supply').innerHTML = supplyDetails.map(node =>
             </div>
         </div>
             <div class="scEmojiDate">
-                <div class="linear-border emoji">
+                <div class="emoji">
                     <div class="scNodeEmoji">
                         <p>${node.event}</p>
                     </div>
