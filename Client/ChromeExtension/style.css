@@ -188,8 +188,7 @@ hr {
 .container {
   width: auto;
   /* height: auto; */
-  margin-top: 18px;
-  margin-bottom: 18px;
+  margin: 12px;
 
   background: white;
   border-radius: 6px;
@@ -225,7 +224,7 @@ hr {
 
 .report {
   position: relative;
-  left: 249px;
+  left: 260px;
 
   text-align: right;
   text-decoration: none;
@@ -235,7 +234,8 @@ hr {
 
 .ratingColumn {
   /* border: black 1px solid; */
-  width: 124px;
+  width: 144px;
+  max-width: 140px;
 }
 
 .right-border {

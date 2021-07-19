@@ -1,3 +1,5 @@
+/** GET ELEMENTS */
+
 const closeAll = document.getElementById("closeAll");
 const news = document.getElementById("news");
 const noNews = document.getElementById("noNews")
@@ -10,39 +12,13 @@ const noNewsCompany = document.getElementById("noNewsCompany");
 const closeNoNews = document.getElementById("closeNoNews");
 const noSupplyCompanyName = document.getElementById("noSupplyCompanyName");
 
-const newsAlert = true;
 
-var newsContainer = document.getElementById("news");
+/** CONSTANTS */
+
+const newsAlert = false;
 
 let companyNameString = 'Acme';
 let companyEventString = 'Nuclear Warfare';
-
-closeAll.addEventListener("click", () => 
-    window.close()
-    , false);
-
-closeNews.addEventListener("click", () => {
-    newsContainer.style.opacity = 0;
-    setTimeout(() =>{
-        news.style.display = "none";
-    }, 200);
-    }, false);
-
-closeNoNews.addEventListener("click", () => 
-    noNews.style.display = "none"
-    , false);
-
-if (!newsAlert) {
-    news.style.display = "none";
-    noNews.style.display = "block";
-    noNewsCompany.innerText = companyNameString;
-} 
-else {
-    news.style.display = "block";
-    noNews.style.display = "none"
-    companyName.innerText = companyNameString;
-    companyEvent.innerText = companyEventString;
-}
 
 let supplyDetails = [
     {
@@ -97,19 +73,51 @@ let ratingsDetails = [
     }
 ]
 
-let ratingsCounter = 0;
 
-document.getElementById('ratings').innerHTML = ratingsDetails.map((node, index) =>
+/** EVENT LISTENERS */
+
+closeAll.addEventListener("click", () => 
+    window.close()
+    , false);
+
+closeNews.addEventListener("click", () => {
+    news.style.opacity = 0;
+    setTimeout(() =>{
+        news.style.display = "none";
+    }, 200);
+    }, false);
+
+closeNoNews.addEventListener("click", () => 
+    noNews.style.display = "none"
+    , false);
+
+
+/** LOGIC */
+
+if (!newsAlert) {
+    news.style.display = "none";
+    noNews.style.display = "block";
+    noNewsCompany.innerText = companyNameString;
+} 
+else {
+    news.style.display = "block";
+    noNews.style.display = "none"
+    companyName.innerText = companyNameString;
+    companyEvent.innerText = companyEventString;
+}
+
+const setRatings = () => {
+    document.getElementById('ratings').innerHTML = ratingsDetails.map((node, index) =>
     `${index % 2 == 0 ? '<div class = "horizontal-no-margin-top">' : ''}
         <div class="ratingColumn ${index % 2 == 0 && "right-border"}">
             <h3>${node.ratingName}</h3>
             <p>${node.ratingValue}</h3>
         </div>
     ${index % 2 != 0 ? '</div>' : ''}`).join('');
+}
 
-
-
-document.getElementById('supply').innerHTML = supplyDetails.map((node, index) =>
+const setSupplyChainDeets = () => {
+    document.getElementById('supply').innerHTML = `<h3>White T Shirt</h3>` + supplyDetails.map((node, index) =>
     `<div class="horizontal">
         <div class="linear-border width75">
             <div class="scNodeDetails">
@@ -140,12 +148,16 @@ document.getElementById('supply').innerHTML = supplyDetails.map((node, index) =>
         <div class="threeDotsInner"></div>
     </div>
     `).join('');
+}
 
 if (supplyDetails.length == 0){
     supply.style.display = "none";
     noSupply.style.display = "block"
     noSupplyCompanyName.innerText = companyNameString;
 }else{
+    setSupplyChainDeets();
     supply.style.display = "block";
     noSupply.style.display = "none"
 }
+
+setRatings();
