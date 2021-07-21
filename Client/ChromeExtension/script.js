@@ -15,12 +15,10 @@ const noSupplyCompanyName = document.getElementById("noSupplyCompanyName");
 
 /** CONSTANTS */
 
-const newsAlert = false;
+const newsAlert = true;
+const companyEventString = 'Nuclear Warfare';
 
-let companyNameString = 'Acme';
-let companyEventString = 'Nuclear Warfare';
-
-let supplyDetails = [
+const supplyDetails = [
     {
         location: 'Penis St Trucks, Qld', 
         ratings: [
@@ -50,7 +48,7 @@ let supplyDetails = [
     }
 ];
 
-let ratingsDetails = [
+const ratingsDetails = [
     {
         ratingName: 'ESG Rating',
         ratingValue: 'B+'
@@ -73,91 +71,139 @@ let ratingsDetails = [
     }
 ]
 
-
-/** EVENT LISTENERS */
-
-closeAll.addEventListener("click", () => 
-    window.close()
-    , false);
-
-closeNews.addEventListener("click", () => {
-    news.style.opacity = 0;
-    setTimeout(() =>{
-        news.style.display = "none";
-    }, 200);
-    }, false);
-
-closeNoNews.addEventListener("click", () => 
-    noNews.style.display = "none"
-    , false);
-
-
-/** LOGIC */
-
-if (!newsAlert) {
-    news.style.display = "none";
-    noNews.style.display = "block";
-    noNewsCompany.innerText = companyNameString;
-} 
-else {
-    news.style.display = "block";
-    noNews.style.display = "none"
-    companyName.innerText = companyNameString;
-    companyEvent.innerText = companyEventString;
+const wikiCrossCheck = async name => {
+    var url = "https://en.wikipedia.org/w/api.php"; 
+    var params = {
+        action: "query",
+        list: "prefixsearch",
+        pssearch: name,
+        format: "json"
+    };
+    url = url + "?origin=*";
+    Object.keys(params).forEach(function(key){url += "&" + key + "=" + params[key];});
+    return fetch(url)
+        .then(function(response){return response.json();})
+        .then(function(response) {
+            var pages = response.query.prefixsearch;
+            // console.log(pages);
+            // console.log("as"+pages[0].title);
+            if (pages.length > 0) return pages[0].title;
+        })
+        .catch(function(error){console.log(error);});
 }
 
-const setRatings = () => {
-    document.getElementById('ratings').innerHTML = ratingsDetails.map((node, index) =>
-    `${index % 2 == 0 ? '<div class = "horizontal-no-margin-top">' : ''}
-        <div class="ratingColumn ${index % 2 == 0 && "right-border"}">
-            <h3>${node.ratingName}</h3>
-            <p>${node.ratingValue}</h3>
-        </div>
-    ${index % 2 != 0 ? '</div>' : ''}`).join('');
-}
+const setup = async () => {
 
-const setSupplyChainDeets = () => {
-    document.getElementById('supply').innerHTML = `<h3>White T Shirt</h3>` + supplyDetails.map((node, index) =>
-    `<div class="horizontal">
-        <div class="linear-border width75">
-            <div class="scNodeDetails">
-                <h3 class="scNodeHeading">${node.location}</h3>
-                ${node.ratings.map(ratings => 
-                    `<div class="horizontal">
-                        <strong class="full-width">${ratings.rating}</strong>
-                        <p class="full-width">${ratings.score}</p>
-                    </div>
-                    `).join('')
-                }
+    (async () => {chrome.tabs.query({active: true, lastFocusedWindow: true}, async tabs => {
+        let domain = tabs[0].url;
+        let deconstructedUrl = domain.split('//')[1].split('.');
+        let cn = deconstructedUrl[0] == 'www' ? deconstructedUrl[1] : deconstructedUrl[0];
+        let companyNameString = cn.charAt(0).toUpperCase() + cn.slice(1);
+        console.log(companyNameString);
+        companyNameString = await wikiCrossCheck(companyNameString) || companyNameString;
+        // return companyNameString;
+        console.log(companyNameString);
+        setEventListeners();
+        console.log('a');
+        setNews(companyNameString);
+        console.log('b');
+        setRatings();
+        console.log('c');
+        setScDetails(companyNameString);
+        console.log('d');
+    })})();
+
+    /** EVENT LISTENERS */
+    const setEventListeners = () => {
+        closeAll.addEventListener("click", () => 
+            window.close()
+            , false);
+
+        closeNews.addEventListener("click", () => {
+            news.style.opacity = 0;
+            setTimeout(() =>{
+                news.style.display = "none";
+            }, 200);
+            }, false);
+
+        closeNoNews.addEventListener("click", () => 
+            noNews.style.display = "none"
+            , false);
+    }
+
+    /** LOGIC */
+    const setNews = (name) => {
+        if (!newsAlert) {
+            news.style.display = "none";
+            noNews.style.display = "block";
+            noNewsCompany.innerText = name;
+        } 
+        else {
+            news.style.display = "block";
+            noNews.style.display = "none"
+            companyName.innerText = name;
+            companyEvent.innerText = companyEventString;
+        }
+    }
+
+
+    const setRatings = () => {
+        const ratings = document.getElementById('ratings');
+        ratings.style.display = 'block';
+        ratings.innerHTML = ratingsDetails.map((node, index) =>
+        `${index % 2 == 0 ? '<div class = "horizontal-no-margin-top">' : ''}
+            <div class="ratingColumn ${index % 2 == 0 && "right-border"}">
+                <h3>${node.ratingName}</h3>
+                <p>${node.ratingValue}</h3>
             </div>
-        </div>
-            <div class="scEmojiDate">
-                <div class="emoji">
-                    <div class="scNodeEmoji">
-                        <p>${node.event}</p>
-                    </div>
+        ${index % 2 != 0 ? '</div>' : ''}`).join('');
+    }
+
+    const setSupplyChainDeets = () => {
+        supply.innerHTML = `<h3>White T Shirt</h3>` + supplyDetails.map((node, index) =>
+        `<div class="horizontal">
+            <div class="linear-border width75">
+                <div class="scNodeDetails">
+                    <h3 class="scNodeHeading">${node.location}</h3>
+                    ${node.ratings.map(ratings => 
+                        `<div class="horizontal">
+                            <strong class="full-width">${ratings.rating}</strong>
+                            <p class="full-width">${ratings.score}</p>
+                        </div>
+                        `).join('')
+                    }
                 </div>
-            <div class="date">
-                <span>${node.date}</span>
+            </div>
+                <div class="scEmojiDate">
+                    <div class="emoji">
+                        <div class="scNodeEmoji">
+                            <p>${node.event}</p>
+                        </div>
+                    </div>
+                <div class="date">
+                    <span>${node.date}</span>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="threeDotsOuter" style="display:${index == supplyDetails.length - 1 ? "none" : "block"}">
-        <div class="threeDotsInner"></div>
-        <div class="threeDotsInner"></div>
-        <div class="threeDotsInner"></div>
-    </div>
-    `).join('');
+        <div class="threeDotsOuter" style="display:${index == supplyDetails.length - 1 ? "none" : "block"}">
+            <div class="threeDotsInner"></div>
+            <div class="threeDotsInner"></div>
+            <div class="threeDotsInner"></div>
+        </div>
+        `).join('');
+    }
+
+    const setScDetails = (name) => {
+        if (supplyDetails.length == 0){
+            supply.style.display = "none";
+            noSupply.style.display = "block"
+            noSupplyCompanyName.innerText = name;
+        } else {
+            setSupplyChainDeets();
+            supply.style.display = "block";
+            noSupply.style.display = "none"
+        }
+    }
 }
 
-if (supplyDetails.length == 0){
-    supply.style.display = "none";
-    noSupply.style.display = "block"
-    noSupplyCompanyName.innerText = companyNameString;
-}else{
-    setSupplyChainDeets();
-    supply.style.display = "block";
-    noSupply.style.display = "none"
-}
-
-setRatings();
+setup();

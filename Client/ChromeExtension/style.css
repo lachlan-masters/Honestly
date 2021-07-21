@@ -186,6 +186,7 @@ hr {
 }
 
 .container {
+  display:none;
   width: auto;
   /* height: auto; */
   margin: 12px;
