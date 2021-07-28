@@ -20,7 +20,7 @@ const companyEventString = 'Nuclear Warfare';
 
 const supplyDetails = [
     {
-        location: 'Penis St Trucks, Qld', 
+        location: 'Main St Trucks, Qld', 
         ratings: [
             {rating: 'Freshness', score: '10 fresh'}, 
             {rating: 'Ethics', score: '10 ethic'}
@@ -29,7 +29,7 @@ const supplyDetails = [
         date: "27 Nov '21 - 30 Nov '21"
     },
     {
-        location: 'Penis St Shipping, Qld', 
+        location: 'Second St Shipping, Qld', 
         ratings: [
             {rating: 'Freshness', score: '10 fresh'}, 
             {rating: 'Ethics', score: '10 ethic'}
@@ -38,7 +38,7 @@ const supplyDetails = [
         date: "27 Nov '21 - 30 Nov '21"
     },
     {
-        location: 'Vas Deferens Port, Qld', 
+        location: 'Third Port, Qld', 
         ratings: [
             {rating: 'Freshness', score: '10 fresh'}, 
             {rating: 'Ethics', score: '10 ethic'}
@@ -48,28 +48,56 @@ const supplyDetails = [
     }
 ];
 
-const ratingsDetails = [
-    {
-        ratingName: 'ESG Rating',
-        ratingValue: 'B+'
-    },
-    {
-        ratingName: 'Penis valuation',
-        ratingValue: 'Huge'
-    },
-    {
-        ratingName: 'GoodReads',
-        ratingValue: 'Good read'
-    },
-    {
-        ratingName: 'Rotten Tomatoes',
-        ratingValue: 'Rotten'
-    },
-    {
-        ratingName: 'Le Test',
-        ratingValue: 'Oui'
-    }
-]
+// esg function goes here
+
+const esgRatingCheck = async () => {
+    var checkedCompany = "Zara";
+    var url = "https://tf689y3hbj.execute-api.us-east-1.amazonaws.com/prod/authorization/search?q=Gucci&token=2256f8ab345f139c67782ea287aaffd3";
+    fetch(url)
+        .then(data => {
+            data.json()
+                .then(data2 => {
+                    console.log(data2[0].total_grade);
+                    // return data2[0].total_grade;
+                    const ratingsDetails = [
+                        {
+                            ratingName: 'ESG Rating',
+                            ratingValue: data2[0].total_grade
+                        },
+                        {
+                            ratingName: 'Value valuation',
+                            ratingValue: 'Good value'
+                        },
+                        {
+                            ratingName: 'GoodReads',
+                            ratingValue: 'Good read'
+                        },
+                        {
+                            ratingName: 'Rotten Tomatoes',
+                            ratingValue: 'Rotten'
+                        },
+                        {
+                            ratingName: 'Le Test',
+                            ratingValue: 'Oui'
+                        }
+                    ]
+                    const ratings = document.getElementById('ratings');
+                    ratings.style.display = 'block';
+                    ratings.innerHTML = ratingsDetails.map((node, index) =>
+                    `${index % 2 == 0 ? '<div class = "horizontal-no-margin-top">' : ''}
+                        <div class="ratingColumn ${index % 2 == 0 && "right-border"}">
+                            <h3>${node.ratingName}</h3>
+                            <p>${node.ratingValue}</h3>
+                        </div>
+                    ${index % 2 != 0 ? '</div>' : ''}`).join('');
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+        });
+}
+
+
 
 const wikiCrossCheck = async name => {
     var url = "https://en.wikipedia.org/w/api.php"; 
@@ -102,12 +130,13 @@ const setup = async () => {
         console.log(companyNameString);
         companyNameString = await wikiCrossCheck(companyNameString) || companyNameString;
         // return companyNameString;
+        // var checkedRating = await esgRatingCheck();
         console.log(companyNameString);
         setEventListeners();
         console.log('a');
         setNews(companyNameString);
         console.log('b');
-        setRatings();
+        await esgRatingCheck();
         console.log('c');
         setScDetails(companyNameString);
         console.log('d');
@@ -146,18 +175,62 @@ const setup = async () => {
         }
     }
 
+    // const ratingsDetails = [
+    //     {
+    //         ratingName: 'ESG Rating',
+    //         ratingValue: checkedRating
+    //     },
+    //     {
+    //         ratingName: 'Value valuation',
+    //         ratingValue: 'Good value'
+    //     },
+    //     {
+    //         ratingName: 'GoodReads',
+    //         ratingValue: 'Good read'
+    //     },
+    //     {
+    //         ratingName: 'Rotten Tomatoes',
+    //         ratingValue: 'Rotten'
+    //     },
+    //     {
+    //         ratingName: 'Le Test',
+    //         ratingValue: 'Oui'
+    //     }
+    // ]
 
-    const setRatings = () => {
-        const ratings = document.getElementById('ratings');
-        ratings.style.display = 'block';
-        ratings.innerHTML = ratingsDetails.map((node, index) =>
-        `${index % 2 == 0 ? '<div class = "horizontal-no-margin-top">' : ''}
-            <div class="ratingColumn ${index % 2 == 0 && "right-border"}">
-                <h3>${node.ratingName}</h3>
-                <p>${node.ratingValue}</h3>
-            </div>
-        ${index % 2 != 0 ? '</div>' : ''}`).join('');
-    }
+    // const setRatings = (rating) => {
+    //     const ratingsDetails = [
+    //         {
+    //             ratingName: 'ESG Rating',
+    //             ratingValue: rating
+    //         },
+    //         {
+    //             ratingName: 'Value valuation',
+    //             ratingValue: 'Good value'
+    //         },
+    //         {
+    //             ratingName: 'GoodReads',
+    //             ratingValue: 'Good read'
+    //         },
+    //         {
+    //             ratingName: 'Rotten Tomatoes',
+    //             ratingValue: 'Rotten'
+    //         },
+    //         {
+    //             ratingName: 'Le Test',
+    //             ratingValue: 'Oui'
+    //         }
+    //     ]
+    //     const ratings = document.getElementById('ratings');
+    //     ratings.style.display = 'block';
+    //     ratings.innerHTML = ratingsDetails.map((node, index) =>
+    //     `${index % 2 == 0 ? '<div class = "horizontal-no-margin-top">' : ''}
+    //         <div class="ratingColumn ${index % 2 == 0 && "right-border"}">
+    //             <h3>${node.ratingName}</h3>
+    //             <p>${node.ratingValue}</h3>
+    //         </div>
+    //     ${index % 2 != 0 ? '</div>' : ''}`).join('');
+    // }
 
     const setSupplyChainDeets = () => {
         supply.innerHTML = `<h3>White T Shirt</h3>` + supplyDetails.map((node, index) =>
