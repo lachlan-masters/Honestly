@@ -199,17 +199,17 @@ const setup = async () => {
         `${index % 2 == 0 ? '<div class = "horizontal-no-margin-top">' : ''}
             <div class="ratingColumn ${index % 2 == 0 && "right-border"}">
                 <h3>${node.ratingName}</h3>
-                ${node.ratingValue == 'Average' ? "<p class='full-width yellow'>Average</p>" : ""}
-                ${node.ratingValue == 'Below Average' ? '<p class="full-width dark-red">Below Avg.</p>' : ""}
-                ${node.ratingValue == 'Above Average' ? '<p class="full-width green">Above Avg.</p>' : ""}
-                ${node.ratingValue == 'BBB' ? '<p class="full-width yellow">BBB</p>' : ""}
-                ${node.ratingValue.includes('%') ? `<p class="full-width">🍅${node.ratingValue}</p>` : ""}
+                ${node.ratingValue == 'Average' ? "<p class='full-width yellow' style='margin-bottom : 10px' >Average</p>" : ""}
+                ${node.ratingValue == 'Below Average' ? '<p class="full-width dark-red" style="margin-bottom : 10px">Below Avg.</p>' : ""}
+                ${node.ratingValue == 'Above Average' ? '<p class="full-width green" style="margin-bottom : 10px">Above Avg.</p>' : ""}
+                ${node.ratingValue == 'BBB' ? '<p class="full-width yellow" style="margin-bottom : 10px">BBB</p>' : ""}
+                ${node.ratingValue.includes('%') ? `<p class="full-width" style="margin-bottom : 10px">🍅 ${node.ratingValue}</p>` : ""}
             </div>
         ${index % 2 != 0 ? '</div>' : ''}`).join('');
     }
 
     const setSupplyChainDeets = () => {
-        supply.innerHTML = `<h3>ULTRABOOST 21 SHOES</h3>` + supplyDetails.map((node, index) =>
+        supply.innerHTML = `<h3 style='margin-bottom:10px'>ULTRABOOST 21 SHOES</h3>` + supplyDetails.map((node, index) =>
         `<div class="horizontal">
             <div class="linear-border width75">
                 <div class="scNodeDetails">
