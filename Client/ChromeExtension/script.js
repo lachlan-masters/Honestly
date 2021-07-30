@@ -15,24 +15,27 @@ const noSupplyCompanyName = document.getElementById("noSupplyCompanyName");
 
 /** CONSTANTS */
 
-const newsAlert = true;
+const newsAlert = false;
 const companyEventString = 'Nuclear Warfare';
+
+// Give headings
+// Separate
 
 const supplyDetails = [
     {
-        location: 'Penis St Trucks, Qld', 
+        location: 'Main St Trucks, Qld', 
         ratings: [
-            {rating: 'Freshness', score: '10 fresh'}, 
-            {rating: 'Ethics', score: '10 ethic'}
+            {rating: 'People', score: -1}, 
+            {rating: 'Planet', score: 1}
         ], 
         event: '🚗', 
         date: "27 Nov '21 - 30 Nov '21"
     },
     {
-        location: 'Penis St Shipping, Qld', 
+        location: 'Main St Shipping, Qld', 
         ratings: [
-            {rating: 'Freshness', score: '10 fresh'}, 
-            {rating: 'Ethics', score: '10 ethic'}
+            {rating: 'People', score: 1}, 
+            {rating: 'Planet', score: 0}
         ], 
         event: '🚢', 
         date: "27 Nov '21 - 30 Nov '21"
@@ -40,8 +43,8 @@ const supplyDetails = [
     {
         location: 'Vas Deferens Port, Qld', 
         ratings: [
-            {rating: 'Freshness', score: '10 fresh'}, 
-            {rating: 'Ethics', score: '10 ethic'}
+            {rating: 'People', score: -1}, 
+            {rating: 'Planet', score: 1}
         ], 
         event: '🚢', 
         date: "30 Nov '21 - 31 Nov '21"
@@ -54,8 +57,8 @@ const ratingsDetails = [
         ratingValue: 'B+'
     },
     {
-        ratingName: 'Penis valuation',
-        ratingValue: 'Huge'
+        ratingName: 'Some valuation',
+        ratingValue: 'AAA'
     },
     {
         ratingName: 'GoodReads',
@@ -160,7 +163,7 @@ const setup = async () => {
     }
 
     const setSupplyChainDeets = () => {
-        supply.innerHTML = `<h3>White T Shirt</h3>` + supplyDetails.map((node, index) =>
+        supply.innerHTML = `<h3>ULTRABOOST 21 SHOES</h3>` + supplyDetails.map((node, index) =>
         `<div class="horizontal">
             <div class="linear-border width75">
                 <div class="scNodeDetails">
@@ -168,7 +171,9 @@ const setup = async () => {
                     ${node.ratings.map(ratings => 
                         `<div class="horizontal">
                             <strong class="full-width">${ratings.rating}</strong>
-                            <p class="full-width">${ratings.score}</p>
+                            ${ratings.score == -1 ? "<p class='full-width dark-red'>Below average</p>" : ""}
+                            ${ratings.score == 0 ? '<p class="full-width yellow">Average</p>' : ""}
+                            ${ratings.score == 1 ? '<p class="full-width green">Above average</p>' : ""}
                         </div>
                         `).join('')
                     }

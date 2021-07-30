@@ -347,3 +347,19 @@ hr {
   border-radius: 100%;
   margin-bottom: 5px;
 }
+
+.dark-red {
+  color: red;
+}
+
+.orange {
+  color: darkorange;
+}
+
+.yellow {
+  color: #ECB523;
+}
+
+.green {
+  color: green;
+}
