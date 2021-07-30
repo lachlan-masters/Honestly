@@ -23,31 +23,28 @@ const companyEventString = 'Nuclear Warfare';
 
 const supplyDetails = [
     {
-        location: 'Main St Trucks, Qld', 
+        location: 'Overseas Factory', 
         ratings: [
             {rating: 'People', score: -1}, 
             {rating: 'Planet', score: 1}
         ], 
-        event: '🚗', 
-        date: "27 Nov '21 - 30 Nov '21"
+        event: '🏭', 
     },
     {
-        location: 'Second St Shipping, Qld', 
+        location: 'Shipping Company', 
         ratings: [
             {rating: 'People', score: 1}, 
             {rating: 'Planet', score: 0}
         ], 
         event: '🚢', 
-        date: "27 Nov '21 - 30 Nov '21"
     },
     {
-        location: 'Third Port, Qld', 
+        location: 'Local Trucking', 
         ratings: [
             {rating: 'People', score: -1}, 
             {rating: 'Planet', score: 1}
         ], 
-        event: '🚢', 
-        date: "30 Nov '21 - 31 Nov '21"
+        event: '🚚', 
     }
 ];
 
@@ -177,23 +174,23 @@ const setup = async () => {
         const ratingsDetails = [
             {
                 ratingName: 'ESG Rating',
-                ratingValue: rating
+                ratingValue: 'BBB'
             },
             {
-                ratingName: 'Value valuation',
-                ratingValue: 'Good value'
+                ratingName: 'Carbon Footprint',
+                ratingValue: 'Average'
             },
             {
-                ratingName: 'GoodReads',
-                ratingValue: 'Good read'
+                ratingName: 'Waste',
+                ratingValue: 'Below Average'
+            },
+            {
+                ratingName: 'Labour Standards',
+                ratingValue: 'Above Average'
             },
             {
                 ratingName: 'Rotten Tomatoes',
-                ratingValue: 'Rotten'
-            },
-            {
-                ratingName: 'Le Test',
-                ratingValue: 'Oui'
+                ratingValue: '87%'
             }
         ]
         const ratings = document.getElementById('ratings');
@@ -202,7 +199,11 @@ const setup = async () => {
         `${index % 2 == 0 ? '<div class = "horizontal-no-margin-top">' : ''}
             <div class="ratingColumn ${index % 2 == 0 && "right-border"}">
                 <h3>${node.ratingName}</h3>
-                <p>${node.ratingValue}</h3>
+                ${node.ratingValue == 'Average' ? "<p class='full-width yellow'>Average</p>" : ""}
+                ${node.ratingValue == 'Below Average' ? '<p class="full-width dark-red">Below Avg.</p>' : ""}
+                ${node.ratingValue == 'Above Average' ? '<p class="full-width green">Above Avg.</p>' : ""}
+                ${node.ratingValue == 'BBB' ? '<p class="full-width yellow">BBB</p>' : ""}
+                ${node.ratingValue.includes('%') ? `<p class="full-width">🍅${node.ratingValue}</p>` : ""}
             </div>
         ${index % 2 != 0 ? '</div>' : ''}`).join('');
     }
@@ -216,9 +217,9 @@ const setup = async () => {
                     ${node.ratings.map(ratings => 
                         `<div class="horizontal">
                             <strong class="full-width">${ratings.rating}</strong>
-                            ${ratings.score == -1 ? "<p class='full-width dark-red'>Below average</p>" : ""}
+                            ${ratings.score == -1 ? "<p class='full-width dark-red'>Below Avg.</p>" : ""}
                             ${ratings.score == 0 ? '<p class="full-width yellow">Average</p>' : ""}
-                            ${ratings.score == 1 ? '<p class="full-width green">Above average</p>' : ""}
+                            ${ratings.score == 1 ? '<p class="full-width green">Above Avg.</p>' : ""}
                         </div>
                         `).join('')
                     }
@@ -230,9 +231,7 @@ const setup = async () => {
                             <p>${node.event}</p>
                         </div>
                     </div>
-                <div class="date">
-                    <span>${node.date}</span>
-                </div>
+
             </div>
         </div>
         <div class="threeDotsOuter" style="display:${index == supplyDetails.length - 1 ? "none" : "block"}">
