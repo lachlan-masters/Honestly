@@ -32,7 +32,7 @@ const supplyDetails = [
         date: "27 Nov '21 - 30 Nov '21"
     },
     {
-        location: 'Main St Shipping, Qld', 
+        location: 'Second St Shipping, Qld', 
         ratings: [
             {rating: 'People', score: 1}, 
             {rating: 'Planet', score: 0}
@@ -41,7 +41,7 @@ const supplyDetails = [
         date: "27 Nov '21 - 30 Nov '21"
     },
     {
-        location: 'Vas Deferens Port, Qld', 
+        location: 'Third Port, Qld', 
         ratings: [
             {rating: 'People', score: -1}, 
             {rating: 'Planet', score: 1}
@@ -88,7 +88,7 @@ const wikiCrossCheck = async name => {
         .then(function(response){return response.json();})
         .then(function(response) {
             var pages = response.query.prefixsearch;
-            // console.log(pages);
+            // consosle.log(pages);
             // console.log("as"+pages[0].title);
             if (pages.length > 0) return pages[0].title;
         })
@@ -107,13 +107,13 @@ const setup = async () => {
         // return companyNameString;
         console.log(companyNameString);
         setEventListeners();
-        console.log('a');
+        // console.log('a');
         setNews(companyNameString);
-        console.log('b');
-        setRatings();
-        console.log('c');
+        // console.log('b');
+        // console.log('c');
         setScDetails(companyNameString);
-        console.log('d');
+        // console.log('d');
+        setRatings();
     })})();
 
     /** EVENT LISTENERS */
@@ -149,8 +149,52 @@ const setup = async () => {
         }
     }
 
+    // const ratingsDetails = [
+    //     {
+    //         ratingName: 'ESG Rating',
+    //         ratingValue: checkedRating
+    //     },
+    //     {
+    //         ratingName: 'Value valuation',
+    //         ratingValue: 'Good value'
+    //     },
+    //     {
+    //         ratingName: 'GoodReads',
+    //         ratingValue: 'Good read'
+    //     },
+    //     {
+    //         ratingName: 'Rotten Tomatoes',
+    //         ratingValue: 'Rotten'
+    //     },
+    //     {
+    //         ratingName: 'Le Test',
+    //         ratingValue: 'Oui'
+    //     }
+    // ]
 
-    const setRatings = () => {
+    const setRatings = (rating) => {
+        const ratingsDetails = [
+            {
+                ratingName: 'ESG Rating',
+                ratingValue: rating
+            },
+            {
+                ratingName: 'Value valuation',
+                ratingValue: 'Good value'
+            },
+            {
+                ratingName: 'GoodReads',
+                ratingValue: 'Good read'
+            },
+            {
+                ratingName: 'Rotten Tomatoes',
+                ratingValue: 'Rotten'
+            },
+            {
+                ratingName: 'Le Test',
+                ratingValue: 'Oui'
+            }
+        ]
         const ratings = document.getElementById('ratings');
         ratings.style.display = 'block';
         ratings.innerHTML = ratingsDetails.map((node, index) =>
