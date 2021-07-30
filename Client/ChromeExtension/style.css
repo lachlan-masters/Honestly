@@ -110,8 +110,8 @@ hr {
 
 #closeAll {
   position: absolute;
-  left: 320px;
-  top: 5px;
+  left: 323px;
+  top: 8px;
   width: 20px;
   height: 20px;
   font-size: 23px;
@@ -186,7 +186,7 @@ hr {
 }
 
 .container {
-  display:none;
+  display: none;
   width: auto;
   /* height: auto; */
   margin: 12px;
@@ -305,7 +305,7 @@ hr {
   border-radius: 19px;
 
   padding: 2px;
-  background-image: -webkit-linear-gradient(left, #7c75e6, #20D6E5);
+  background-image: -webkit-linear-gradient(left, #7c75e6, #20d6e5);
   border-radius: 19px;
 }
 
