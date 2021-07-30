@@ -104,6 +104,7 @@ const setup = async () => {
         let companyNameString = cn.charAt(0).toUpperCase() + cn.slice(1);
         console.log(companyNameString);
         companyNameString = await wikiCrossCheck(companyNameString) || companyNameString;
+        chrome.action.setIcon({path: "/images/data_32.png"});
         // return companyNameString;
         console.log(companyNameString);
         setEventListeners();
