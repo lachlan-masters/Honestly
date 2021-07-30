@@ -10,17 +10,17 @@
   "action": {
     "default_popup": "popup.html",
     "default_icon": {
-      "16": "/images/honestly_16.png",
-      "32": "/images/honestly_32.png",
-      "48": "/images/honestly_48.png",
-      "128": "/images/honestly_72.png"
+      "16": "/images/grey_16.png",
+      "32": "/images/grey_32.png",
+      "48": "/images/grey_48.png",
+      "128": "/images/grey_128.png"
     }
   },
   "icons": {
-    "16": "/images/honestly_16.png",
-    "32": "/images/honestly_32.png",
-    "48": "/images/honestly_48.png",
-    "128": "/images/honestly_72.png"
+    "16": "/images/grey_16.png",
+    "32": "/images/grey_32.png",
+    "48": "/images/grey_48.png",
+    "128": "/images/grey_128.png"
   },
   "options_page": "options.html"
 }
