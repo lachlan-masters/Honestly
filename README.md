@@ -112,7 +112,7 @@ Use the following steps to get Honestly Extension up and running.
 
 The extension is now loaded into the browser.
 
-**Using the Extension**
+**Using the Extension**</br>
 All data is currently hardcoded. Hence, for testing purposes, any website can be used for testing. In reality such data would be stored on a database, such that every website would yield a different window in the extension.
 
 Thus, currently, the extension can be viewed from any website and hence click on the Honestly logo (is grey) in the extension bar. (the extension window is scrollable)
