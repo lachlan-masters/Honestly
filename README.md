@@ -2,30 +2,28 @@
 
 It’s time for us to do business and consume, Honestly.
 
-## Video
-[![thumbnail](https://user-images.githubusercontent.com/74993848/127760324-bc663874-6b81-4103-84fc-b1337f5cbb2f.png)](https://youtu.be/azpLSOzA82s)
-*honestly - IBM Call for Code 2021 Entry*
-
 ## Contents
 
 1. [Whats's the Problem?](#what's-the-problem?)
 2. [Solution](#solution)
-3. [Architectural Diagram](#architectural-diagram)
-5. [Technology](#technology)
-6. [Getting started](#getting-started)
-7. [License](#license)
+3. [Video](#video)
+4. [Repo Breakdown](#repo-breakdown)
+5. [Architectural Diagram](#architectural-diagram)
+6. [Technology](#technology)
+7. [Getting started](#getting-started)
+8. [License](#license)
 
 ## What's the Problem?
 
 Despite a growing demand from consumers for ethical, sustainable and transparent business practices, there exists no simple and effective means to reliably display how businesses operate. Thus, consumers are unable to easily identify and avoid practices that they may disagree with. This problem has been proliferated throughout covid, particularly with the rise in online shopping. 
 
-For example, Yash, one of the young online shoppers we interviewed, was horrified to find out that his regular online purchases might support modern slavery, water wastage or excessive carbon emission. Yash is not alone, and as the global material footprint rose nearly 18 percent from 2010 to 2017 (UN), supply chain management is a bigger problem now than ever before. 
+For example, Anna, one of the young online shoppers we interviewed, was horrified to find out that his regular online purchases might support modern slavery, water wastage or excessive carbon emission. Yash is not alone, and as the global material footprint rose nearly 18 percent from 2010 to 2017 (UN), supply chain management is a bigger problem now than ever before. 
 
 
 ## Solution
 ### The Idea
 
-Introducing “Honestly”! Honestly is an online browser extension aimed at passing supply chain transparency to individuals like Yash. It acts as an assistant throughout the shopping process, altering the user to any bad news that the brand has been linked to, displaying a list of relevant ratings compiled from external bodies, and aggregating and benchmarking supply chain data on the selected product against industry standards. This is all displayed in a purposefully impartial and digestible form, to support the user in their decision making process. 
+Introducing “Honestly”! Honestly is an online browser extension aimed at passing supply chain transparency to consumers. It acts as an assistant throughout the shopping process, altering the user to any bad news that the brand has been linked to, displaying a list of relevant ratings compiled from external bodies, and aggregating and benchmarking supply chain data on the selected product against industry standards. This is all displayed in a purposefully impartial and digestible form, to support the user in their decision making process. 
 
 Furthermore, for a small subscription fee, Honestly provides businesses a verified platform to share ethical or sustainable practices, thereby building positive brand value and attracting more customers. In particular, as 9 in 10 Australian consumers are more likely to “purchase ethical and sustainable products” (CouriersPlease Survey), there exists a legitimate business case for adoption.
 
@@ -48,23 +46,21 @@ Good on you is an example of a relatively similar local solution. It acts as a r
 
 ### References
 - CouriersPlease. (2020). [New research reveals.](https://www.couriersplease.com.au/about/media-release) CouriersPlease.
-- Division, U. (2021). — [SDG Indicators.](https://unstats.un.org/sdgs/report/2020/goal-12/) Retrieved 31 July 2021, from 
+- Division, U. (2021). — [SDG Indicators.](https://unstats.un.org/sdgs/report/2020/goal-12/) Retrieved 31 July 2021
+
+## Video
+[![thumbnail](https://user-images.githubusercontent.com/74993848/127760324-bc663874-6b81-4103-84fc-b1337f5cbb2f.png)](https://youtu.be/azpLSOzA82s)
+*honestly - IBM Call for Code 2021 Entry*
+
+## Repo Breakdown
 
 
 ## Architectural Diagram
 ![CFC_Subcomp_2021_Architectural_Diagram](https://user-images.githubusercontent.com/74993848/127756954-03944d9d-478c-4539-8a99-946fbf5ae7ef.png)
 
-This solution is an all-in-one sharing platform, built on a React Native front-end and Node back-end, and integrating Google Maps, Auth0, Stripe and Twilio. It is hosted on the IBM Cloud.
-
-1. The user launches the mobile app and can either list their station or rent out a station.
-1. The user can either search their nearby vicinity, a specific location or en route to a location for charging stations. Furthermore, when listing stations they can be geocoded and reverse geocoded as needed.
-1. The user can login securely, and trust that their details are in good hands.
-1. The user can trust that their payment details are handled securely.
-1. The user can message their renter easily in case of any issue, and can easily authenticate their account.
-
-## Technology
 Honestly is run on a Node engine with a Sequel database.The critical news events are scraped by the News API and parsed by the Watson Natural Language Understanding engine. Ratings are pulled from various APIs and the web. The supply chain information of each individual product is plugged through a key into the business’ supply chain management software, and compared against industry benchmarks.
 
+## Technology
 **IBM Cloud Services**
 - [IBM Watson Natural Language Understanding](https://www.ibm.com/cloud/watson-natural-language-understanding)
 - [IBM Cloud Foundry](https://www.ibm.com/au-en/cloud/cloud-foundry)
@@ -97,27 +93,28 @@ Use the following steps to get Honestly Extension up and running.
 ### Prerequisite
 
 - Install [Google Chrome](https://www.google.com.au/intl/en_au/chrome/)
-- Install [Node.js](
-- Install [React Native CLI dependencies](https://reactnative.dev/docs/getting-started.html).
-    - [Node.js](https://nodejs.org/en/)
-    - [Watchman](https://facebook.github.io/watchman/docs/install)
-    - **iOS only**
-        - [Xcode](https://itunes.apple.com/us/app/xcode/id497799835?mt=12)
-        - [CocoaPods](https://guides.cocoapods.org/using/getting-started.html)
-    - **Android only**
-        - [Java Development Kit](https://www.oracle.com/java/technologies/javase-jdk8-downloads.html)
-        - [Android Studio](https://developer.android.com/studio/index.html) - add Android 9 (Pie) SDK & configure `ANDROID_HOME`
-        - [Create an Android Virtual Device (AVD)](https://developer.android.com/studio/run/managing-avds.html) - with Pie image (API Level 28)
-- Clone the [repository](https://github.com/Call-for-Code/Solution-Starter-Kit-Disasters-2020).
+- Install [Node.js](https://nodejs.org/en/)
+- Clone the [repository](https://github.com/lachlan-masters/Honestly).
 
 ### Installing extension onto browser
 
-1. Go to the [Chrome Extension Manager](chrome://extensions/)
-2. Select 'Load Unpacked'
-3. 
+1. Go to the [Chrome Extension Manager](chrome://extensions/).
+2. Select 'Load Unpacked'.
+3. Locate and select the ChromeExtension folder under `/CFC21/Client/ChromeExtension`.
+4. Select the puzzle symbol located in the top right section of window.
+5. Ensure the 'pin' is selected (next to the 'honestly' extension).
+
+The extension is now loaded into the browser.
+
+**Using the Extension**
+As the plan going forward was 
+All data is currently hardcoded. Hence, for testing purposes, any website can be used for walkthrough.
 
 
 ### Testing News Analyser
+Under a development plan, the News API cannot be used in a browser and hence for this demonstration cannot be used in the 
+
+The News Analyser is setup such that a command line argment is used to specify what news to search for. This functionality would be replaced with the company name of the url 
 
 
 To run the mobile application (using the Xcode iOS Simulator or Android Studio Emulator):
@@ -134,6 +131,12 @@ From a terminal:
     - **Android only**: `npm run android`
         > **Note**: Your Android Studio needs to have the `Android 9 (Pie)` SDK and a `Pie API Level 28` virtual device.
 
+## Authors
+**Bangshuo Zhu** - University of Sydney </br>
+**Harrison Adkin** - University of Sydney</br>
+**Lachlan Masters** - University of Technology Sydney</br>
+**Liam Mills** - University of Sydney</br>
+**Nick Wright** - University of Technology Sydney</br>
 
 ## License
 
