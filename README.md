@@ -1,18 +1,16 @@
 # Honestly
 
-It’s time for all of us to do business and consume, Honestly.
+It’s time for us to do business and consume, Honestly.
 
 ## Video
-********
-[![Rechargd: a proposed aid to climate change. Video edited and voiced by Connor Russell (University of Sydney).](./images/video-thumbnail.png)](https://youtube.com)
-Video edited and voiced by Connor Russell (University of Sydney).
+[![thumbnail](https://user-images.githubusercontent.com/74993848/127760324-bc663874-6b81-4103-84fc-b1337f5cbb2f.png)](https://youtu.be/azpLSOzA82s)
+*honestly - IBM Call for Code 2021 Entry*
 
 ## Contents
 
 1. [Whats's the Problem?](#what's-the-problem?)
 2. [Solution](#solution)
-3. [Diagrams](#diagrams)
-4. [Documents](#documents)
+3. [Architectural Diagram](#architectural-diagram)
 5. [Technology](#technology)
 6. [Getting started](#getting-started)
 7. [License](#license)
@@ -33,22 +31,27 @@ Furthermore, for a small subscription fee, Honestly provides businesses a verifi
 
 ### How it works
 
-The goal of the application is to provide a convenient EV recharging solution for all EV drivers, while enabling charging station owners to register on the app and earn a profit by renting out their charging station to other EV drivers.
+”Honestly” scrapes the business’ name from its domain, cross-checking this against the MediaWiki API. Beyond this, the vanilla frontend is connected up to our backend, run on a Node engine and stored in a Postgres Sequel database.
  
-A user has the option of registering as a “driver” or “provider” or as both. The user can choose to login as a driver or provider, and can easily switch between their two accounts at any time. 
+The critical news events are scraped by the News API, understood by the Watson Natural Language Understanding engine and cached for 12 hours.
  
-As a driver, the user would be able to locate available nearby charging stations on the app’s live interactive map. When the driver clicks on their preferred station, they can see more details about the station (including a rating out of 5 stars), and can make a booking to charge their car at designated times. The driver will receive a reminder when it approaches the time they have booked. After recharging their car, the driver will have the option of rating the station provider out of 5 stars, and provide a short review of their charging experience.
+The ratings are then stored in a industry-by-industry dictionary, scraped from various APIs and the web, and cached for 7 days.
  
-As a provider, the user can list their charging station, including the availability times. After listing their station, other users will be able to locate their station on the app’s live interactive map, and make a booking during the available times. Providers can also manage their bookings on the app. Drivers and providers can message each other, enabling drivers to ask questions (such as about speed of charge, location etc.) prior to, during and after the charge. 
+The individual product information is pulled from its slug and cross checked against a dictionary supplied by the business. The data on that product’s supply chain is then plugged through a key into the business’ supply chain management software, and compared against industry benchmarks.
  
-Payment will be made via the app. 
+Our greater website is built in the Vue framework, authenticated with Auth0 and connected up to the same Sequel database on the backend.
 
 ### Existing Solutions
 Almost no solutions encompassing our entire functionality exist. Thus, Honestly remains superior to any existing solution as it simply aggregates and displays essential metrics to users, rather than collecting or assessing data and passing judgements.
 
 Good on you is an example of a relatively similar local solution. It acts as a rating platform that collects data and produces ethicality ratings on various fashion brands. Despite offering similar insights, organisations like Good on you often operate solely as a website, requiring users to actively seek out its information, rather than being passively updated throughout their regular browsing. Furthermore, they don’t offer users the ability to further research their findings, which Honestly allows through its newsAPI interface. As such, Honestly has the potential to become the go-to platform for Good on You and the many other certifying and rating organisations out there.
 
-## Diagrams
+### References
+- CouriersPlease. (2020). [New research reveals.](https://www.couriersplease.com.au/about/media-release) CouriersPlease.
+- Division, U. (2021). — [SDG Indicators.](https://unstats.un.org/sdgs/report/2020/goal-12/) Retrieved 31 July 2021, from 
+
+
+## Architectural Diagram
 ![CFC_Subcomp_2021_Architectural_Diagram](https://user-images.githubusercontent.com/74993848/127756954-03944d9d-478c-4539-8a99-946fbf5ae7ef.png)
 
 This solution is an all-in-one sharing platform, built on a React Native front-end and Node back-end, and integrating Google Maps, Auth0, Stripe and Twilio. It is hosted on the IBM Cloud.
@@ -58,12 +61,6 @@ This solution is an all-in-one sharing platform, built on a React Native front-e
 1. The user can login securely, and trust that their details are in good hands.
 1. The user can trust that their payment details are handled securely.
 1. The user can message their renter easily in case of any issue, and can easily authenticate their account.
-
-## Documents
-
-- [ClimateWorks Australia “The State of Electric Vehicles in Australia” report](https://www.climateworksaustralia.org/wp-content/uploads/2018/06/climateworks_australia_state_of_electric_vehicles2_june_2018.pdf)
-- [The Guardian “Electric cars produce less CO2 than petrol vehicles, study confirms” article](https://www.theguardian.com/environment/2020/mar/23/electric-cars-produce-less-co2-than-petrol-vehicles-study-confirms)
-- [The Driven - “Norway horrified as new rates make ev charging prices higher than petrol” article](https://thedriven.io/2020/01/20/norway-horrified-as-new-rates-make-ev-charging-prices-higher-than-petrol/)
 
 ## Technology
 Honestly is run on a Node engine with a Sequel database.The critical news events are scraped by the News API and parsed by the Watson Natural Language Understanding engine. Ratings are pulled from various APIs and the web. The supply chain information of each individual product is plugged through a key into the business’ supply chain management software, and compared against industry benchmarks.
@@ -95,6 +92,7 @@ Honestly is run on a Node engine with a Sequel database.The critical news events
 ## Getting started
 
 Use the following steps to get Honestly Extension up and running.
+******* Note that is hardcoded as backend isnt linked up
 
 ### Prerequisite
 
@@ -112,7 +110,15 @@ Use the following steps to get Honestly Extension up and running.
         - [Create an Android Virtual Device (AVD)](https://developer.android.com/studio/run/managing-avds.html) - with Pie image (API Level 28)
 - Clone the [repository](https://github.com/Call-for-Code/Solution-Starter-Kit-Disasters-2020).
 
-### Run the mobile application on Expo
+### Installing extension onto browser
+
+1. Go to the [Chrome Extension Manager](chrome://extensions/)
+2. Select 'Load Unpacked'
+3. 
+
+
+### Testing News Analyser
+
 
 To run the mobile application (using the Xcode iOS Simulator or Android Studio Emulator):
 
