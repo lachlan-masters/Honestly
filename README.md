@@ -102,7 +102,7 @@ Use the following steps to get Honestly Extension up and running.
 - Setup a [NewsAPI key](https://newsapi.org/register) by creating an account
 - Setup a [IBM Watson Natural Language Understanding Key](https://www.ibm.com/cloud/watson-natural-language-understanding) 
 
-### Installing extension onto browser
+### Installing Extension onto Browser
 
 1. Go to the [Chrome Extension Manager](chrome://extensions/).
 2. Select 'Load Unpacked'.
@@ -113,12 +113,13 @@ Use the following steps to get Honestly Extension up and running.
 The extension is now loaded into the browser.
 
 **Using the Extension**
-As the plan going forward was 
-All data is currently hardcoded. Hence, for testing purposes, any website can be used for testing.
+All data is currently hardcoded. Hence, for testing purposes, any website can be used for testing. In reality such data would be stored on a database, such that every website would yield a different window in the extension.
 
-The initial window of the extension displays what would be shown if the website had no bad news detected and if we had supply chain data to show. </br>
+Thus, currently, the extension can be viewed from any website and hence click on the Honestly logo (is grey) in the extension bar. (the extension window is scrollable)
 
-To see what a news alert would show complete the following:
+The initial window of the extension displays the name of the current website you are on, what would be shown if the website had no bad news detected, and if there is supply chain data to show. </br>
+
+To see what a news alert would show, or if no supply chain data is supplied, complete the following:
 1. Locate script.js: `cd Client/ChromeExtension/script.js
 2. Edit line 18 such to `const newsAlert = true;`
 3. Comment out (or delete) lines 25 to 48, such that variable supplyDetails is an empty array.
@@ -132,14 +133,14 @@ Its important to note that if a news alert was detected, the extension window wo
 
 
 ### Testing News Analyser
-For demonstrational purposes, the news analyser is setup such that, through using node, a single command line argment is used to specify what news to search for. Later in development the plan is to cache the news analysis results in a database, which would then be retrieved by the user using PostgreSQL, th
+For demonstrational purposes, the news analyser is setup such that, through using node, a single command line argment is used to specify what news to search for. Later in development the plan is to cache the news analysis results in a database (searching for more news every 12 hours), which would then be retrieved by the user in the browser through the use of PostrgreSQL. This demonstration illustrates how the integration of News API and sentiment analysis in Watson Natural Language Understanding can be used to analyse news events and determine what is deemed bad or negative. The use of other external libraries would be used to determine the common keyword of set bad articles to thus automatically determine the 'bad news' event.
 
 1. From CFC21 repo: `cd Server`
 2. Create a .env file `touch .env`
 3. Add lines `NEWS_API_KEY=[News Key]` and `NLU_API_KEY=[NLU Key]`, where 'News Key' is the News API key organised in the prerequisites and 'NLU Key' is the IBM Watson Natural Language Understanding key organised in the prerequisites. 
 4. `node app.js [ARGUMENT]`, where ARGUMENT is a news target to search for, such as, `Google`.
 
-The result will show the news articles that were analysed by the Natural Language Understanding, and the average sentiment score of set articles. 
+The result will show the news articles that were analysed by the Natural Language Understanding, and the average sentiment score of set articles. This score can range from 1 to -1. The more positive the score is, the more positive the article is. The more negative the score is, the more negative the article is.
 
 
 
