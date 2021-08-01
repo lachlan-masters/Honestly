@@ -120,12 +120,12 @@ Thus, currently, the extension can be viewed from any website and hence click on
 The initial window of the extension displays the name of the current website you are on, what would be shown if the website had no bad news detected, and if there is supply chain data to show. </br>
 
 To see what a news alert would show, or if no supply chain data is supplied, complete the following:
-1. Locate script.js: `cd Client/ChromeExtension/script.js
-2. Edit line 18 such to `const newsAlert = true;`
+1. Locate script.js: `cd Client/ChromeExtension/script.js.
+2. Edit line 18 such to `const newsAlert = true;`.
 3. Comment out (or delete) lines 25 to 48, such that variable supplyDetails is an empty array.
-4. Save file
-5. Move back to browser
-6. Close and open extension
+4. Save file.
+5. Move back to browser.
+6. Close and open extension window.
 
 Its important to note that if a news alert was detected, the extension window would pop up, as to alert the user and ensuring the news alert doesn't go unnoticed.
 
