@@ -53,7 +53,10 @@ Good on you is an example of a relatively similar local solution. It acts as a r
 *honestly - IBM Call for Code 2021 Entry*
 
 ## Repo Breakdown
-Within this repo are three essential components, the Client side which contains the extension front end, the Sever side which contains analysis such as integration of News API and Watson Natural Langauage Understand, and the Website (which is currently a work in progress).
+Within this repo are three essential components: 
+- `Client` contains the extension front end.
+- `Sever` contains analysis such as integration of News API and Watson Natural Langauage Understanding.
+- `Website` (which is currently a work in progress and hence is to be ignored).
 
 
 
