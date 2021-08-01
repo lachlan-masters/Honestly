@@ -53,6 +53,8 @@ Good on you is an example of a relatively similar local solution. It acts as a r
 *honestly - IBM Call for Code 2021 Entry*
 
 ## Repo Breakdown
+Within this repo are three essential components, the Client side which contains the extension front end, the Sever side which contains analysis such as integration of News API and Watson Natural Langauage Understand, and the Website (which is currently a work in progress).
+
 
 
 ## Architectural Diagram
@@ -117,19 +119,6 @@ Under a development plan, the News API cannot be used in a browser and hence for
 The News Analyser is setup such that a command line argment is used to specify what news to search for. This functionality would be replaced with the company name of the url 
 
 
-To run the mobile application (using the Xcode iOS Simulator or Android Studio Emulator):
-
-From a terminal:
-1. Go to the root directory.
-1. Install the dependencies: `npm install`.
-1. **iOS only**: Go to the `ios` directory: `cd ios`.
-1. **iOS only**: Install pod dependencies: `pod install`.
-1. **iOS only**: Return to the `mobile-app` directory: `cd ../`.
-1. Launch the app in the simulator/emulator:
-    - **iOS only**: `npm run ios`
-        > **Note**: You should be running at least iOS 13.0. The first time you launch the simulator, you should ensure that you set a Location in the Features menu.
-    - **Android only**: `npm run android`
-        > **Note**: Your Android Studio needs to have the `Android 9 (Pie)` SDK and a `Pie API Level 28` virtual device.
 
 ## Authors
 **Bangshuo Zhu** - University of Sydney </br>
