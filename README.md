@@ -131,4 +131,4 @@ From a terminal:
 
 ## License
 
-This solution starter is made available under the [Apache 2 License](LICENSE).
+This solution is made available under the [Apache 2 License](LICENSE).
