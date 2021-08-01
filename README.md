@@ -63,7 +63,7 @@ Within this repo are three essential components:
 ## Architectural Diagram
 ![CFC_Subcomp_2021_Architectural_Diagram](https://user-images.githubusercontent.com/74993848/127756954-03944d9d-478c-4539-8a99-946fbf5ae7ef.png)
 
-Honestly is run on a Node engine with a Sequel database.The critical news events are scraped by the News API and parsed by the Watson Natural Language Understanding engine. Ratings are pulled from various APIs and the web. The supply chain information of each individual product is plugged through a key into the business’ supply chain management software, and compared against industry benchmarks.
+Honestly is run on a Node engine with a Sequel database. The critical news events are scraped by the News API and parsed by the Watson Natural Language Understanding engine. Ratings are pulled from various APIs and the web. The supply chain information of each individual product is plugged through a key into the business’ supply chain management software, and compared against industry benchmarks.
 
 ## Technology
 **IBM Cloud Services**
@@ -93,13 +93,14 @@ Honestly is run on a Node engine with a Sequel database.The critical news events
 ## Getting started
 
 Use the following steps to get Honestly Extension up and running.
-******* Note that is hardcoded as backend isnt linked up
 
 ### Prerequisite
 
 - Install [Google Chrome](https://www.google.com.au/intl/en_au/chrome/)
 - Install [Node.js](https://nodejs.org/en/)
 - Clone the [repository](https://github.com/lachlan-masters/Honestly).
+- Setup a [NewsAPI key](https://newsapi.org/register) by creating an account
+- Setup a [IBM Watson Natural Language Understanding Key](https://www.ibm.com/cloud/watson-natural-language-understanding) 
 
 ### Installing extension onto browser
 
@@ -113,13 +114,32 @@ The extension is now loaded into the browser.
 
 **Using the Extension**
 As the plan going forward was 
-All data is currently hardcoded. Hence, for testing purposes, any website can be used for walkthrough.
+All data is currently hardcoded. Hence, for testing purposes, any website can be used for testing.
+
+The initial window of the extension displays what would be shown if the website had no bad news detected and if we had supply chain data to show. </br>
+
+To see what a news alert would show complete the following:
+1. Locate script.js: `cd Client/ChromeExtension/script.js
+2. Edit line 18 such to `const newsAlert = true;`
+3. Comment out (or delete) lines 25 to 48, such that variable supplyDetails is an empty array.
+4. Save file
+5. Move back to browser
+6. Close and open extension
+
+Its important to note that if a news alert was detected, the extension window would pop up, as to alert the user and ensuring the news alert doesn't go unnoticed.
+
+
 
 
 ### Testing News Analyser
-Under a development plan, the News API cannot be used in a browser and hence for this demonstration cannot be used in the 
+For demonstrational purposes, the news analyser is setup such that, through using node, a single command line argment is used to specify what news to search for. Later in development the plan is to cache the news analysis results in a database, which would then be retrieved by the user using PostgreSQL, th
 
-The News Analyser is setup such that a command line argment is used to specify what news to search for. This functionality would be replaced with the company name of the url 
+1. From CFC21 repo: `cd Server`
+2. Create a .env file `touch .env`
+3. Add lines `NEWS_API_KEY=[News Key]` and `NLU_API_KEY=[NLU Key]`, where 'News Key' is the News API key organised in the prerequisites and 'NLU Key' is the IBM Watson Natural Language Understanding key organised in the prerequisites. 
+4. `node app.js [ARGUMENT]`, where ARGUMENT is a news target to search for, such as, `Google`.
+
+The result will show the news articles that were analysed by the Natural Language Understanding, and the average sentiment score of set articles. 
 
 
 
