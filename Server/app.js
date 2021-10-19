@@ -3,6 +3,7 @@ require('dotenv').config();
 const NaturalLanguageUnderstandingV1 = require('ibm-watson/natural-language-understanding/v1');
 const { IamAuthenticator } = require('ibm-watson/auth');
 const NewsAPI = require('newsapi');
+const { exit } = require('process');
 
 
 
@@ -21,6 +22,11 @@ let newsSearch;
 
 
 const target = process.argv[2];
+
+if (target == undefined) {
+    console.log('Please enter a target.');
+    exit()
+}
 
 
 const newsParams = {
