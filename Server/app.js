@@ -6,6 +6,15 @@ const NewsAPI = require('newsapi');
 const { exit } = require('process');
 
 
+function sleep(milliseconds) {
+  var start = new Date().getTime();
+  for (var i = 0; i < 1e7; i++) {
+    if ((new Date().getTime() - start) > milliseconds){
+      break;
+    }
+  }
+}
+
 
 const newsapi = new NewsAPI(process.env.NEWS_API_KEY);
 
@@ -17,9 +26,7 @@ const NLU = new NaturalLanguageUnderstandingV1({
     serviceUrl: 'https://api.au-syd.natural-language-understanding.watson.cloud.ibm.com',
 });
 
-
 let newsSearch;
-
 
 const target = process.argv[2];
 
@@ -27,7 +34,6 @@ if (target == undefined) {
     console.log('Please enter a target.');
     exit()
 }
-
 
 const newsParams = {
     qInTitle: target,
@@ -38,54 +44,83 @@ const newsParams = {
     // sources: 'New York Times'
 }
 
-newsapi.v2.everything(newsParams)
-    .then(response => {
-        console.log(JSON.stringify(response, null, 2));
-        newsSearch = response.articles;
 
-        let docScore = 0, targetScore = 0;
-        let arrLength = (newsSearch.length > 5) ? 5 : newsSearch.length;
+function analyseData() {
+    let articleArr = [];
+    let docScoreArr = [];
 
-        let analyse = new Promise((resolve, reject) => {
-            for (let i = 0; i < arrLength; i++) {
-                const analyseParams = {
-                    'url': newsSearch[i].url,
-                    'features': {
-                        'sentiment': {
-                            // 'targets': [
-                            //     target
-                            // ],
-                            'document': true
-                        },
-                    }
-                };
+    for (let i = 0; i < 1; i++) {
+        newsapi.v2.everything(newsParams)
+        .then(response => {
+            console.log(JSON.stringify(response, null, 2));
+            newsSearch = response.articles;
 
-                NLU.analyze(analyseParams)
-                    .then(analysisResults => {
-                        // console.log(JSON.stringify(analysisResults, null, 2));
-                        docScore += analysisResults.result.sentiment.document.score;
-                        // targetScore += analysisResults.result.sentiment.targets[0].score;
-                        // console.log(analysisResults.result.sentiment.targets[0].score);
-                        // console.log(score);
+            articleArr.push(response.totalResults);
 
-                        if (i == (arrLength - 1)) {
-                            resolve(docScore, targetScore)
+            let docScore = 0, targetScore = 0;
+            let arrLength = (newsSearch.length > 5) ? 5 : newsSearch.length;
+
+            let analyse = new Promise((resolve, reject) => {
+                for (let i = 0; i < arrLength; i++) {
+                    const analyseParams = {
+                        'url': newsSearch[i].url,
+                        'features': {
+                            'sentiment': {
+                                // 'targets': [
+                                //     target
+                                // ],
+                                'document': true
+                            },
                         }
-                    })
-                    .catch(err => {
-                        console.log('error:', err);
-                    });
+                    };
 
-            }
+                    NLU.analyze(analyseParams)
+                        .then(analysisResults => {
+                            // console.log(JSON.stringify(analysisResults, null, 2));
+                            docScore += analysisResults.result.sentiment.document.score;
+                            // targetScore += analysisResults.result.sentiment.targets[0].score;
+                            // console.log(analysisResults.result.sentiment.targets[0].score);
+                            // console.log(score);
+
+                            if (i == (arrLength - 1)) {
+                                resolve(docScore, targetScore)
+                            }
+                        })
+                        .catch(err => {
+                            console.log('error:', err);
+                        });
+
+                }
+            });
+
+            analyse.then((docScore, targetScore) => {
+                console.log('Document score of ' + target + ': ' + docScore/(arrLength));
+                docScoreArr.push(docScore/arrLength);
+                sleep(1000);
+                // console.log('Score of ' + target + ': ' + targetScore / 5);
+            });
+
+        })
+
+        .catch(err => {
+            console.log('error:', err);
         });
 
-        analyse.then((docScore, targetScore) => {
-            console.log('Document score of ' + target + ': ' + docScore/(arrLength));
-            // console.log('Score of ' + target + ': ' + targetScore / 5);
-        });
+        
+    }
 
-    })
+    return ((articleArr, docScoreArr))
+}
 
-    .catch(err => {
-        console.log('error:', err);
-    });
+async function waitForData() {
+    const articleArr, docScoreArr = await analyseData()
+    console.log(articleArr);
+    console.log(docScoreArr);
+}
+    
+
+waitForData();
+
+
+
+
